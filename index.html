@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Robert Patrick</title>
+<meta name="description" content="Projects by Robert Patrick, technology advisor, consultant and problem solver: open source network operations tools and patents.">
+<link rel="canonical" href="https://robert-patrick-texas.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Robert Patrick · Projects">
+<meta property="og:description" content="Open source network operations tools and patents by Robert Patrick, technology advisor, consultant and problem solver.">
+<meta property="og:url" content="https://robert-patrick-texas.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231D3F66'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='28' font-weight='700' text-anchor='middle' fill='white'%3ERP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap">
+<style>
+  /* Layout: one 66rem column. A compact intro, then projects (open source cards, then a quieter patent list)
+     and a closing panel that points to LinkedIn and GitHub for contact and the full background. */
+  :root {
+    --bg: #F4F6F8;
+    --surface: #FFFFFF;
+    --ink: #111B26;
+    --muted: #4B5866;
+    --line: #D6DDE4;
+    --accent: #1D3F66;
+    --accent-hover: #142E4C;
+    --on-accent: #FFFFFF;
+    --brass: #8A6420;
+    --tint: #E9EEF3;
+    --lang-go: #00ADD8;
+    --lang-python: #3572A5;
+    --lang-shell: #89E051;
+    --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --font-body: "IBM Plex Sans", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0C131B;
+      --surface: #121C27;
+      --ink: #E7ECF1;
+      --muted: #9DAAB8;
+      --line: #243243;
+      --accent: #9CC0EA;
+      --accent-hover: #BFD6F2;
+      --on-accent: #0B1622;
+      --brass: #D8B467;
+      --tint: #101A24;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0C131B;
+    --surface: #121C27;
+    --ink: #E7ECF1;
+    --muted: #9DAAB8;
+    --line: #243243;
+    --accent: #9CC0EA;
+    --accent-hover: #BFD6F2;
+    --on-accent: #0B1622;
+    --brass: #D8B467;
+    --tint: #101A24;
+    color-scheme: dark;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+  .page {
+    max-width: 66rem;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 4vw, 2.5rem);
+    padding-block: 0 2.5rem;
+  }
+
+  a { color: var(--accent); text-underline-offset: 0.18em; }
+  a:hover { color: var(--accent-hover); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  h1, h2, h3 { text-wrap: balance; }
+
+  .label {
+    margin: 0;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brass);
+  }
+
+  /* Top bar */
+  .topbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1.5rem;
+    padding-block: 1.25rem;
+  }
+  .mark {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .topbar ul { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; margin: 0; padding: 0; list-style: none; }
+  .topbar ul a { color: var(--muted); font-size: 0.95rem; font-weight: 500; text-decoration: none; }
+  .topbar ul a:hover { color: var(--ink); }
+
+  /* Intro */
+  .intro {
+    padding-block: clamp(2rem, 5vw, 3.5rem) clamp(2.5rem, 5vw, 3.5rem);
+    border-bottom: 1px solid var(--line);
+  }
+  h1 {
+    margin: 0.75rem 0 0.5rem;
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 1.5rem + 3.6vw, 3.9rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+  }
+  .role {
+    margin: 0 0 1.25rem;
+    font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+  .lead {
+    margin: 0;
+    max-width: 40rem;
+    font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
+    line-height: 1.6;
+    color: var(--muted);
+  }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.7rem 1.15rem;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 0.98rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+  }
+  .btn:hover { border-color: var(--ink); color: var(--ink); }
+  .btn-primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+  .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: var(--on-accent); }
+
+  /* Sections */
+  main { display: grid; gap: clamp(3rem, 7vw, 4.5rem); padding-block: clamp(2.5rem, 6vw, 4rem) 0; }
+  section { min-width: 0; scroll-margin-top: 1.5rem; }
+  h2 {
+    margin: 0 0 1.25rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 1.25rem + 1.3vw, 2.3rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .section-intro { max-width: 38rem; margin: -0.5rem 0 2rem; color: var(--muted); }
+
+  /* Project cards */
+  .cards { display: grid; gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
+  @media (min-width: 62rem) {
+    .cards-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    min-width: 0;
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  .desc { flex: 1; margin: 0; font-size: 1rem; color: var(--muted); }
+  .links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; font-size: 0.95rem; font-weight: 600; }
+  .links a { text-decoration: none; }
+  .links a:hover { text-decoration: underline; }
+
+  /* Patents: a quiet list at the end of Projects */
+  .patents { margin-top: 3rem; padding-top: 1.75rem; border-top: 1px solid var(--line); }
+  .patent-list { display: grid; gap: 1rem; margin: 0.9rem 0 0; padding: 0; list-style: none; }
+  .patent-list li { display: grid; gap: 0.1rem 2rem; }
+  @media (min-width: 44rem) {
+    .patent-list li { grid-template-columns: 9.5rem minmax(0, 1fr); }
+  }
+  .patent-no {
+    margin: 0;
+    padding-top: 0.1rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+  }
+  .patent-title { margin: 0; font-size: 1rem; font-weight: 500; }
+  .patent-title a { color: var(--ink); text-decoration-color: var(--line); }
+  .patent-title a:hover { color: var(--accent); text-decoration-color: currentColor; }
+  .patent-meta { margin: 0; font-size: 0.85rem; color: var(--muted); }
+
+  /* Projects */
+  .project-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+  }
+  .project h3 { margin: 0; font-family: var(--font-mono); font-size: 1.15rem; font-weight: 500; }
+  .lang { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; color: var(--muted); }
+  .lang::before { content: ""; width: 0.65rem; height: 0.65rem; border-radius: 50%; background: var(--lang); }
+  .cmd {
+    margin: 0;
+    padding: 0.7rem 0.9rem;
+    overflow-x: auto;
+    background: var(--tint);
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .prompt { color: var(--muted); user-select: none; }
+  .more { margin: 1.75rem 0 0; font-weight: 600; }
+
+  /* Connect */
+  .connect {
+    padding: clamp(1.75rem, 5vw, 3rem);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  .connect p { max-width: 38rem; margin: 0; color: var(--muted); }
+
+  /* Footer */
+  .site-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
+    margin-top: clamp(3rem, 7vw, 5rem);
+    padding-block: 1.5rem 0;
+    border-top: 1px solid var(--line);
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  .site-footer p { margin: 0; }
+  .tagline { font-family: var(--font-display); font-style: italic; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn { transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page" id="top">
+
+  <nav class="topbar" aria-label="Primary">
+    <a class="mark" href="#top" aria-label="Robert Patrick, back to top">RP</a>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="https://www.linkedin.com/in/robert-patrick-texas/">LinkedIn</a></li>
+      <li><a href="https://github.com/robert-patrick-texas">GitHub</a></li>
+    </ul>
+  </nav>
+
+  <header class="intro">
+    <p class="label">Leader · Builder · Veteran · Technologist</p>
+    <h1>Robert Patrick</h1>
+    <p class="role">Technology Advisor, Consultant and Problem Solver</p>
+    <p class="lead">I help leaders make clear, confident decisions about technology, and I still build. Below are open source tools from my network operations work and the patents behind two companies I co-founded. For my full background or to get in touch, find me on LinkedIn.</p>
+  </header>
+
+  <main>
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">Projects</h2>
+      <p class="section-intro">These tools come from real network operations work, and any team is welcome to use them.</p>
+      <ul class="cards cards-3">
+        <li class="card project">
+          <div class="project-head">
+            <h3>karvi</h3>
+            <span class="lang" style="--lang: var(--lang-go)">Go</span>
+          </div>
+          <p class="desc">Runs commands safely across fleets of Cisco, Juniper and other network devices, with dry runs and a complete record of every result.</p>
+          <pre class="cmd"><code><span class="prompt">$ </span>karvi cmd router1 show clock</code></pre>
+          <div class="links">
+            <a href="https://github.com/robert-patrick-texas/karvi">Repository →</a>
+          </div>
+        </li>
+        <li class="card project">
+          <div class="project-head">
+            <h3>axlib</h3>
+            <span class="lang" style="--lang: var(--lang-python)">Python</span>
+          </div>
+          <p class="desc">A Python toolkit for network automation that keeps passwords out of scripts by fetching credentials from encrypted stores.</p>
+          <pre class="cmd"><code><span class="prompt">$ </span>uv add axlib</code></pre>
+          <div class="links">
+            <a href="https://github.com/robert-patrick-texas/axlib">Repository →</a>
+            <a href="https://pypi.org/project/axlib/">PyPI package →</a>
+          </div>
+        </li>
+        <li class="card project">
+          <div class="project-head">
+            <h3>radiator-yubikey</h3>
+            <span class="lang" style="--lang: var(--lang-shell)">Shell</span>
+          </div>
+          <p class="desc">YubiKey two-factor logins for Radiator RADIUS that work fully offline, with no dependency on an outside cloud service.</p>
+          <pre class="cmd"><code><span class="prompt">$ </span>sudo ./yubikey-db.sh verify</code></pre>
+          <div class="links">
+            <a href="https://github.com/robert-patrick-texas/radiator-yubikey">Repository →</a>
+            <a href="https://robert-patrick-texas.github.io/radiator-yubikey/">Guide website →</a>
+          </div>
+        </li>
+      </ul>
+      <p class="more"><a href="https://github.com/robert-patrick-texas?tab=repositories">See all repositories on GitHub →</a></p>
+
+      <div class="patents">
+        <h3 class="label">Patents</h3>
+        <ul class="patent-list">
+          <li>
+            <p class="patent-no">US 8,850,565 B2</p>
+            <div>
+              <p class="patent-title"><a href="https://patents.google.com/patent/US8850565/">System and method for coordinating network incident response activities</a></p>
+              <p class="patent-meta">Filed 2005 · Granted 2014 · Hewlett Packard Enterprise</p>
+            </div>
+          </li>
+          <li>
+            <p class="patent-no">US 8,849,720 B2</p>
+            <div>
+              <p class="patent-title"><a href="https://patents.google.com/patent/US8849720B2/">Entertainment event ticket purchase and exchange system</a></p>
+              <p class="patent-meta">Priority 2000 · Granted 2014 · Global eTicket Exchange</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="connect" class="connect" aria-labelledby="connect-title">
+      <h2 id="connect-title">More about me</h2>
+      <p>My career history, background and current work are on LinkedIn, which is also the best way to reach me. All of my code lives on GitHub.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://www.linkedin.com/in/robert-patrick-texas/">Connect on LinkedIn</a>
+        <a class="btn" href="https://github.com/robert-patrick-texas">Follow on GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Robert Patrick · Texas, USA</p>
+    <p class="tagline">The future is bright.</p>
+  </footer>
+
+</div>
+</body>
+</html>
