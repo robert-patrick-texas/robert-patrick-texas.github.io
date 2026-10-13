@@ -4,18 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Robert Patrick</title>
-<meta name="description" content="Projects by Robert Patrick, technology advisor, consultant and problem solver: open source network operations tools and patents.">
+<meta name="description" content="Projects by Robert Patrick, technology advisor, consultant and problem solver: open source network operations tools.">
 <link rel="canonical" href="https://robert-patrick-texas.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Robert Patrick · Projects">
-<meta property="og:description" content="Open source network operations tools and patents by Robert Patrick, technology advisor, consultant and problem solver.">
+<meta property="og:description" content="Open source network operations tools by Robert Patrick, technology advisor, consultant and problem solver.">
 <meta property="og:url" content="https://robert-patrick-texas.github.io/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231D3F66'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='28' font-weight='700' text-anchor='middle' fill='white'%3ERP%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap">
 <style>
-  /* Layout: one 66rem column. A compact intro, then projects (open source cards, then a quieter patent list)
+  /* Layout: one 66rem column. A compact intro, then open source project cards
      and a closing panel that points to LinkedIn and GitHub for contact and the full background. */
   :root {
     --bg: #F4F6F8;
@@ -139,7 +139,6 @@
   }
   .lead {
     margin: 0;
-    max-width: 40rem;
     font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
     line-height: 1.6;
     color: var(--muted);
@@ -173,7 +172,7 @@
     line-height: 1.15;
     letter-spacing: -0.01em;
   }
-  .section-intro { max-width: 38rem; margin: -0.5rem 0 2rem; color: var(--muted); }
+  .section-intro { margin: -0.5rem 0 2rem; color: var(--muted); }
 
   /* Project cards */
   .cards { display: grid; gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
@@ -194,26 +193,6 @@
   .links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; font-size: 0.95rem; font-weight: 600; }
   .links a { text-decoration: none; }
   .links a:hover { text-decoration: underline; }
-
-  /* Patents: a quiet list at the end of Projects */
-  .patents { margin-top: 3rem; padding-top: 1.75rem; border-top: 1px solid var(--line); }
-  .patent-list { display: grid; gap: 1rem; margin: 0.9rem 0 0; padding: 0; list-style: none; }
-  .patent-list li { display: grid; gap: 0.1rem 2rem; }
-  @media (min-width: 44rem) {
-    .patent-list li { grid-template-columns: 9.5rem minmax(0, 1fr); }
-  }
-  .patent-no {
-    margin: 0;
-    padding-top: 0.1rem;
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    font-variant-numeric: tabular-nums;
-    color: var(--muted);
-  }
-  .patent-title { margin: 0; font-size: 1rem; font-weight: 500; }
-  .patent-title a { color: var(--ink); text-decoration-color: var(--line); }
-  .patent-title a:hover { color: var(--accent); text-decoration-color: currentColor; }
-  .patent-meta { margin: 0; font-size: 0.85rem; color: var(--muted); }
 
   /* Projects */
   .project-head {
@@ -247,7 +226,7 @@
     border: 1px solid var(--line);
     border-radius: 10px;
   }
-  .connect p { max-width: 38rem; margin: 0; color: var(--muted); }
+  .connect p { margin: 0; color: var(--muted); }
 
   /* Footer */
   .site-footer {
@@ -286,7 +265,7 @@
     <p class="label">Leader · Builder · Veteran · Technologist</p>
     <h1>Robert Patrick</h1>
     <p class="role">Technology Advisor, Consultant and Problem Solver</p>
-    <p class="lead">I help leaders make clear, confident decisions about technology, and I still build. Below are open source tools from my network operations work and the patents behind two companies I co-founded. For my full background or to get in touch, find me on LinkedIn.</p>
+    <p class="lead">I help leaders make clear, confident decisions about technology, and I still build. Below are open source tools from my network operations work. For my full background or to get in touch, find me on LinkedIn.</p>
   </header>
 
   <main>
@@ -331,26 +310,6 @@
         </li>
       </ul>
       <p class="more"><a href="https://github.com/robert-patrick-texas?tab=repositories">See all repositories on GitHub →</a></p>
-
-      <div class="patents">
-        <h3 class="label">Patents</h3>
-        <ul class="patent-list">
-          <li>
-            <p class="patent-no">US 8,850,565 B2</p>
-            <div>
-              <p class="patent-title"><a href="https://patents.google.com/patent/US8850565/">System and method for coordinating network incident response activities</a></p>
-              <p class="patent-meta">Filed 2005 · Granted 2014 · Hewlett Packard Enterprise</p>
-            </div>
-          </li>
-          <li>
-            <p class="patent-no">US 8,849,720 B2</p>
-            <div>
-              <p class="patent-title"><a href="https://patents.google.com/patent/US8849720B2/">Entertainment event ticket purchase and exchange system</a></p>
-              <p class="patent-meta">Priority 2000 · Granted 2014 · Global eTicket Exchange</p>
-            </div>
-          </li>
-        </ul>
-      </div>
     </section>
 
     <section id="connect" class="connect" aria-labelledby="connect-title">
